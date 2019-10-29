@@ -1,0 +1,42 @@
+	HashMap<String, Integer> maps = new HashMap<>();
+		maps.put("Chathu", 100);
+		maps.put("Madhura", 80);
+		maps.put("Bhagya", 70);
+		maps.put("Aarya", 68);
+				
+				
+		LinkedHashMap<String, Integer> lhm = new LinkedHashMap<>();
+		
+		lhm.put("Chathu", 100);
+		lhm.put("Madhura", 80);
+		lhm.put("Bhagya", 70);
+		lhm.put("Aarya", 68);
+		
+		TreeMap<String, Integer> tmap = new TreeMap<>(); 
+		
+		tmap.put("Chathu", 100);
+		tmap.put("Madhura", 80);
+		tmap.put("Bhagya", 70);
+		tmap.put("Aarya", 68);
+	
+		//LinkedHash
+		for(Map.Entry m:lhm.entrySet()){
+			   System.out.println(m.getKey()+" "+m.getValue());
+			 }
+		System.out.println("-----Above is Retrived From LinkedHash Map--------"); 
+		  
+		//HashMApRetrivel
+		for(Map.Entry m:maps.entrySet()){
+			   System.out.println(m.getKey()+" "+m.getValue());
+			  }
+		
+		
+		System.out.println("-----Above is Retrived From Hash Map--------"); 
+		  
+		//TreeMapRetrivel
+		for(Map.Entry t:tmap.entrySet()){
+			   System.out.println(t.getKey()+" "+t.getValue());
+			  }
+		
+		System.out.println("-----Above is Retrived From Tree Map--------"); 
+	

@@ -1,0 +1,34 @@
+class Codechef
+{
+    public static int calcSumInt()
+    {
+        int sum=0;
+        String str = "12as5 hell 3 deds42 se1 hy2";
+        
+        String clean = str.replaceAll("\\D+","");  
+        //\\D+ refers [0-9] in regular expression //\\W+ refer [a-z] //\\S+ white Spaces
+        int value = Integer.parseInt(clean);
+        //System.out.println(clean); //Numeric Values
+        
+        while(value!=0)
+        {
+            sum+=value%10;
+            value=value/10;
+        }
+        //Method 2 Below Using Methods.
+        /*
+         for(int i=0;i<str.length();i++)
+         {
+             if(Character.isDigit(str.charAt(i)))
+             {
+                 sum=sum+Character.getNumericValue(str.charAt(i));
+             }
+         }*/
+         return sum;
+        
+    }
+	public static void main (String[] args) throws java.lang.Exception
+	{
+	    System.out.println(calcSumInt());
+	}
+}

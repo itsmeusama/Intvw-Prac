@@ -1,0 +1,122 @@
+
+-- 1.) Create all table with primary key and foreign key Constrains
+
+	CREATE TABLE Employee
+	(
+		Emp_id Int NOT NULL,
+		Ename Varchar(10),
+		Dob Date,
+		Dept_id Int
+	)
+	
+	ALTER TABLE Employee
+	ADD PRIMARY KEY(Emp_id)
+
+	CREATE TABLE Department
+	(
+		Dept_id Int NOT NULL,
+		Dname Varchar(10),
+		Primary Key (Dept_id)
+	)
+
+	ALTER TABLE Employee
+	ADD CONSTRAINT fk_emp FOREIGN KEY(Dept_id)     
+    REFERENCES Department(Dept_id) 
+
+	CREATE TABLE Salary
+	(
+		Emp_id Int,
+		Amount Int
+	)
+
+	ALTER TABLE Salary
+	ADD CONSTRAINT fk_salary FOREIGN KEY(Emp_id)     
+	REFERENCES Employee(Emp_id) 
+
+
+-- 2.)Insert data into them
+
+	insert into Department values(123,'IT')
+	insert into Department values(178,'Admin')
+	insert into Department values(156,'R&D')
+	insert into Department values(196,'HR')
+
+	insert into Employee values(8089,'Kamal','1991-02-20',196)
+	insert into Employee values(8090,'Vimal','1995-07-20',123)
+	insert into Employee values(8091,'Amal','1997-09-30',178)
+	insert into Employee values(8092,'Bimal','1992-01-23',156)
+	insert into Employee values(8093,'Sirimal','1990-04-13',196)
+	insert into Employee values(8094,'Nimal','1994-02-23',178)
+
+	insert into Salary values(8089,45000)
+	insert into Salary values(8090,65000)
+	insert into Salary values(8091,95000)
+	insert into Salary values(8092,85000)
+	insert into Salary values(8093,70000)
+	insert into Salary values(8094,90000)
+
+--3.)Retrive EmpID,Emp Name,Dept Name,salary for the employees whose salary is > 50000
+	
+	select e.Emp_id,e.Ename,d.Dname,s.Amount as Salary
+	from employee e,Department d, Salary s
+	where e.Dept_id=d.Dept_id and e.Emp_id=s.Emp_id and s.Amount>50000
+
+-- 4.)Increment the salary by 5000 for those who asssigned to HR Department
+
+	Update Salary
+	SET Amount = Amount+5000
+	where Emp_id in (Select e.Emp_id
+						From Department d, Employee e	
+						Where e.Dept_id=d.Dept_id and d.Dname='HR')
+
+--NeedToCheckThis
+5.) Delete the Employee who has assigned to admin Dept
+
+	Delete From Employee
+	where Emp_id in (Select e.Emp_id
+						From Department d, Employee e	
+						Where e.Dept_id=d.Dept_id and d.Dname='Admin')
+
+-- 6.)Create a Stored Procedure to Retrive Dept Wise Total Salary.
+
+	CREATE Procedure Dept_wise_sal
+	AS
+	BEGIN
+		Select sum(s.Amount),d.Dname
+		From Employee e, Department d, Salary s
+		Where e.Dept_id=d.Dept_id and e.Emp_id=s.Emp_id
+		Group by d.Dept_id,d.Dname
+	END;
+
+	EXECUTE Dept_wise_sal
+
+	
+-- 7.) Create a Stored Procedrue to Retrive all employees who has assigned to a particular Dept
+
+	CREATE PROCEDURE EmpAndDept1(@DeptName AS VARCHAR(MAX))
+	AS
+	BEGIN
+		SELECT
+		 e.Ename,d.Dname
+	FROM 
+        Employee e, Department d
+    WHERE
+        e.Dept_id=d.Dept_id and d.Dname=@DeptName
+	    
+	END;
+
+	EXECUTE EmpAndDept1 @DeptName = IT;
+----------------------
+
+
+
+
+
+	select * From employee
+	Select * from Department
+	Select * from Salary
+
+Drop Table Employee
+Drop Table Department
+Drop Table Salary
+

@@ -1,0 +1,91 @@
+
+public class Players {
+
+	int gno;
+	
+	public void guessWhat(){
+		gno = (int) (Math.random()*10);
+		System.out.println("Value is: "+ gno);
+	}
+	
+}
+---------------------
+//Main
+-----
+
+import java.util.Scanner;
+
+public class Guesswhat {
+
+	public static void main(String[] args) {
+		
+		//3 player & guess game, who are got the correct guesses
+		Players p1 = new Players();
+		Players p2 = new Players();
+		Players p3 = new Players();
+		
+		p1.guessWhat();
+		p2.guessWhat();
+		p3.guessWhat();
+		
+		int p1Guess=p1.gno;
+		int p2Guess=p2.gno;
+		int p3Guess=p3.gno;
+		
+		
+		int value = (int) (Math.random()*10); //Game Random Value
+		
+		boolean pl1 = (p1Guess==value);
+		boolean pl2 = (p2Guess==value);
+		boolean pl3 =(p3Guess==value);
+		
+		if (pl1 | pl2 | pl3)
+		{
+			System.out.println("Who won the Guess: ");
+			System.out.println("Player 1 Guess is = "+pl1);
+			System.out.println("Player 2 Guess is = "+pl2);
+			System.out.println("Player 3 Guess is = "+pl3);
+			
+		}
+		else
+			System.out.println("Nobody guessed it correctly");
+		
+	
+		
+		
+		
+		/*for(int i=0; i<5; i++)
+		{*/
+		/*int randomno = (int)(Math.random()*10);
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Type Yo guessing Value: ");
+		int gno=sc.nextInt();
+		if(gno==randomno)
+			System.out.println("Wowwww Yo Guess is absolutely Correct ");
+		else
+			System.out.println("What a fucking guess that was: "+"Correct Value is "+randomno);
+		//}
+*/
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	}
+}
+

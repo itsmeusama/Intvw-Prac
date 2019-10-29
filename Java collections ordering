@@ -1,0 +1,76 @@
+songlist.txt
+
+Pink Moon/Nick Drake
+Somersault/Zero 7
+Shiva Moon/ Prem Joshuwa
+Newyork Nagaram/ ARR
+Deep Channel / Afro Celts
+Munbe va /Sheraya Goshal
+
+----------------------------
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.TreeSet;
+
+// Task of this Exercise is to read the notepad and diplay the song titles in alphabetic order
+//That can be achieved by 1.Tree set 2.Collections.sort Method
+
+
+public class JukeBox
+{
+//Storing the Song Title in an Array List
+	ArrayList<String> songList = new ArrayList<>();
+	
+	//Tree Set replaced Array List to achieve alphabetical Order  
+	//TreeSet<String> songList = new TreeSet<>();
+	
+	public static void main(String[] args) 
+	{
+	
+		new JukeBox().go();
+		
+	}
+	//Loading the file and printing the contents
+		public void go()
+		{
+			getSongs();
+			System.out.println(songList);
+			Collections.sort(songList);
+			System.out.println(songList);
+			
+		}
+		//read the file and calling the addSong method for each line
+		public void getSongs()
+		{
+			try
+			{
+				File file = new File("/home/user//Desktop/songlist.txt");
+				BufferedReader reader =new BufferedReader(new FileReader(file));
+				String line = null;
+				while((line=reader.readLine())!= null)
+				{
+					addSong(line);
+				}
+			}
+				catch(Exception ex)
+				{
+					ex.printStackTrace();
+				}
+			
+			
+		} 
+		//Considering Only the song title and put in to songList	 
+		void addSong(String lineToParse)
+		{
+			String[] tokens = lineToParse.split("/");
+			songList.add(tokens[0]);
+		}
+
+}
+
+
+

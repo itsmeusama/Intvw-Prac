@@ -1,0 +1,79 @@
+
+public class ArrayReverse {
+	
+	
+	
+	/*//Factorial Recursive way
+	private static int factorial(int num)
+	{
+		if(num<=1)
+		{
+			return 1;
+		}
+		else
+			return num*factorial(num-1);
+		
+	}*/
+	public static void main(String[] args) {
+	
+	/*//Integer Array Reverse without Arrays and Loops
+		int y=0;
+		int x = 5214;
+		while (x!=0)
+		{
+			y=y*10;
+			y=y+x%10;
+			x=x/10;
+			
+		}
+		System.out.println(y);*/
+	
+	
+	
+		//String Reverse
+		String str = "Hello World";
+		char vals[] = str.toCharArray();
+		
+		for (int i=0; i<vals.length/2; i++)
+		{
+			char temp=vals[i];
+			vals[i]=vals[vals.length -i -1];
+			vals[vals.length -i -1]=temp;
+			
+		}
+		//System.out.println("Reversed Array Should be: 8,12,7,6,5,10" );
+		System.out.println("Output is: ");
+		for(int j=0; j<=vals.length-1; j++)
+		{
+			
+			System.out.println(vals[j]);
+		}
+		
+		/*ArrayReverse arr = new ArrayReverse();
+		int result = arr.factorial(5);
+		System.out.println("Factorial is: "+result);
+		
+		
+		
+		//Integer Array Reverse
+		int arr[] = {10,5,6,7,12};
+		for (int i=0; i<arr.length/2; i++)
+		{
+			int temp=arr[i];
+			arr[i]=arr[arr.length -i -1];
+			arr[arr.length -i -1]=temp;
+			
+		}
+		System.out.println("Reversed Array Should be: 8,12,7,6,5,10" );
+		System.out.println("Output is: ");
+		for(int i=0; i<=arr.length-1; i++)
+		{
+			
+			System.out.println(arr[i]);
+		}
+*/
+		
+	}
+
+}
+

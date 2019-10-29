@@ -1,0 +1,69 @@
+//Duplicate Value Eliminating in a String Array
+public class Ex {
+
+	public static void main(String[] args) {
+		
+		String arr[]= {"Apple","orange","Mango","orange"};
+		String temp[]= {};
+		
+		for(int i=0; i<arr.length-1;i++)
+		{
+			for(int j=1; j<4; j++)
+			{
+				if(arr[i] != arr[j])    //AppleVsOrange
+				{
+					temp[j-1]=arr[j-1];  
+				}
+				else
+					continue;
+			}
+				
+		}
+		for(String str: temp)
+		{
+			System.out.println(str);
+		}
+
+	}
+
+}
+
+-------------
+//Duplicate Value Eliminating in an ArrayList
+
+
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Codechef
+{
+    public static <T> ArrayList<T> removeDuplicates(ArrayList<T> list)
+	{
+	    //NewList
+	    ArrayList<T> newList = new ArrayList<T>();
+	    
+	    //Traversing the through the list which contains Duplicates
+		  for(T val : list)
+		{
+		   if(!newList.contains(val))
+		    {
+		        newList.add(val);
+		    }
+		}
+		return newList;
+	}
+	
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		ArrayList<Integer> list =new ArrayList<Integer>(Arrays.asList(10,20,30,10,30,20));
+		
+		//Removing Duplicates
+		ArrayList<Integer> newList = removeDuplicates(list);
+		System.out.println("ArrayList with duplicates removed: "
+						+ newList); 
+	
+	}
+}
+
